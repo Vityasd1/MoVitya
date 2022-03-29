@@ -12,6 +12,7 @@ const setWatchList = async (force = false) => {
         // console.log(querySnapshot);
         // setMovies(querySnapshot.docs);
     }
+
 }
 
 const addToWatchList = async (movie,session,setWatchList) => {
