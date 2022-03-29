@@ -1,19 +1,6 @@
-import { useRecoilValue} from "recoil";
-import { deleteDoc, doc, getDocs, setDoc} from "firebase/firestore";
+import {deleteDoc, doc, setDoc} from "firebase/firestore";
 
-import {watchListState} from "../recoil/atoms/movies";
 import {db} from "../firebase";
-
-
-const setWatchList = async (force = false) => {
-    const [movies, setMovies] = useRecoilValue(watchListState);
-    if (force || movies.length === 0) {
-        // const querySnapshot = await getDocs(collection(db, "user", token.sub.toString(), "movie"));
-        // console.log(querySnapshot);
-        // setMovies(querySnapshot.docs);
-    }
-
-}
 
 const addToWatchList = async (movie,session,setWatchList) => {
    if(session?.data){
@@ -38,4 +25,4 @@ const removeFromWatchList = async (movie,session,movies,setMovies) => {
 
 }
 
-export {setWatchList,addToWatchList,removeFromWatchList}
+export {addToWatchList, removeFromWatchList}

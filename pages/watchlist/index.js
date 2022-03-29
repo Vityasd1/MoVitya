@@ -3,7 +3,7 @@ import {useRecoilState} from "recoil";
 import axios from "axios";
 import {useRouter} from "next/router";
 import {collection, getDocs} from "firebase/firestore";
-import {getSession, useSession} from "next-auth/react";
+import {useSession} from "next-auth/react";
 
 import {db} from "../../firebase";
 import {watchListState} from "../../recoil/atoms/movies";
