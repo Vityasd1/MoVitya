@@ -1,9 +1,9 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import "firebase/firestore"
-import { signInAnonymously} from "firebase/auth";
+import {signInAnonymously} from "firebase/auth";
 
-import {app, auth, db} from "../../../firebase";
+import {auth} from "../../../firebase";
 
 
 // For more information on each option (and a full list of options) go to
@@ -52,6 +52,6 @@ export default NextAuth({
         // verifyRequest: '/auth/verify-request', // (used for check email message)
         // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
     },
-    secret: process.env.NEXTAUTH_SECRET
+    secret: process.env.SECRET
     // adapter: FirebaseAdapter(firestore),
 })
