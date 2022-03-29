@@ -3,7 +3,6 @@ import Image from 'next/image'
 import {HeartIcon} from "@heroicons/react/solid";
 import {HeartIcon as HeartOutline} from "@heroicons/react/outline";
 import {useRouter} from "next/router";
-import {doc, setDoc,deleteDoc} from 'firebase/firestore';
 import {useSession} from "next-auth/react";
 import {useRecoilState} from "recoil";
 
@@ -46,6 +45,7 @@ function Thumbnail({movie,fromWatchList = false},ref)  {
     if(fromWatchList && !watchList.find(element => element.id === movie.id)){
         return <></>
     }
+
 
  return (
     <div ref={ref} onClick={handleClick} className="group p-2 cursor-pointer transition-duration-200 ease-in transform sm:hover:scale-105 hover:z-50">

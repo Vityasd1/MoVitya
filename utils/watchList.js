@@ -1,8 +1,8 @@
-import {useRecoilState, useRecoilValue} from "recoil";
+import { useRecoilValue} from "recoil";
+import { deleteDoc, doc, getDocs, setDoc} from "firebase/firestore";
+
 import {watchListState} from "../recoil/atoms/movies";
-import {collection, deleteDoc, doc, getDocs, setDoc} from "firebase/firestore";
 import {db} from "../firebase";
-import {useSession} from "next-auth/react";
 
 
 const setWatchList = async (force = false) => {

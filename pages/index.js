@@ -1,17 +1,18 @@
 import Head from 'next/head'
-import Header from "../components/Header";
-import Nav from "../components/Nav";
-import Results from "../components/Results";
-import requests from "../utils/requests";
 import axios from "axios";
-import {useRecoilState, useRecoilValue, useRecoilValueLoadable} from "recoil";
-import { watchListState as watchAtom} from "../recoil/atoms/movies";
+import {useRecoilState} from "recoil";
 import {getSession, useSession} from "next-auth/react";
 import {collection, getDocs} from "firebase/firestore";
 import {auth, db} from "../firebase";
 import {useEffect,useState} from "react";
 import {useRouter} from "next/router";
 import {signInAnonymously} from "firebase/auth";
+
+import { watchListState as watchAtom} from "../recoil/atoms/movies";
+import Header from "../components/Header";
+import Nav from "../components/Nav";
+import Results from "../components/Results";
+import requests from "../utils/requests";
 
 export default function Home({results,genres,watchList}) {
     const [watchListState,setWatchListState] = useRecoilState(watchAtom);

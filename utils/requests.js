@@ -1,10 +1,4 @@
-import axios from "axios";
-
 const API_KEY = process.env.API_KEY
-
-// export const getGenres = () =>{
-//     axios.get()
-// }
 
 export default {
     fetchTrending: {

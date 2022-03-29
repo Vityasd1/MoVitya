@@ -1,14 +1,9 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import { setDoc,doc,updateDoc, collection, getDocs,addDoc,query,where } from 'firebase/firestore';
 import "firebase/firestore"
-import { getAuth,signInAnonymously} from "firebase/auth";
+import { signInAnonymously} from "firebase/auth";
 
-
-
-import moviesState from "../../../recoil/atoms/movies";
 import {app, auth, db} from "../../../firebase";
-import {useRecoilState} from "recoil";
 
 
 // For more information on each option (and a full list of options) go to

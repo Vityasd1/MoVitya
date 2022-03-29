@@ -1,7 +1,7 @@
 import React from 'react';
-import requests from "../utils/requests";
 import {useRouter} from "next/router";
 import {useSetRecoilState} from "recoil";
+
 import {searchOpenState} from "../recoil/atoms/search";
 
 const Nav = ({genres,localFilter}) => {

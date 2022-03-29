@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import Thumbnail from "./Thumbnail";
 import FlipMove from "react-flip-move";
-import axios from "axios";
-import requests from "../utils/requests";
-import {useRecoilState, useRecoilValue, useSetRecoilState} from "recoil";
-import {watchListState as watchAtom} from "../recoil/atoms/movies";
 import {useRouter} from "next/router";
 import ReactPaginate from "react-paginate";
+
+import Thumbnail from "./Thumbnail";
 import Loader from "./Loader";
 
 const Results = ({results, watchList}) => {

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Image from 'next/image';
-import HeaderItem from "./HeaderItem";
 import {
     BadgeCheckIcon,
     CollectionIcon,
@@ -11,11 +10,12 @@ import {
 } from "@heroicons/react/outline";
 import {useRouter} from "next/router";
 import {useSession} from "next-auth/react";
-import LogoutItem from "./LogoutImage";
 import {signOut} from "next-auth/react"
 import {useRecoilState} from "recoil";
 
+import LogoutItem from "./LogoutImage";
 import {searchOpenState} from "../recoil/atoms/search";
+import HeaderItem from "./HeaderItem";
 
 const Header = ({searchTerm, setSearchTerm}) => {
     const session = useSession();
