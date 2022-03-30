@@ -4,11 +4,11 @@ import {useRecoilState} from "recoil";
 import {getSession, useSession} from "next-auth/react";
 import {collection, getDocs} from "firebase/firestore";
 import {auth, db} from "../firebase";
-import {useEffect,useState} from "react";
+import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import {signInAnonymously} from "firebase/auth";
+import {getAuth, signInAnonymously} from "firebase/auth";
 
-import { watchListState as watchAtom} from "../recoil/atoms/movies";
+import {watchListState as watchAtom} from "../recoil/atoms/movies";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 import Results from "../components/Results";
@@ -59,10 +59,19 @@ export async function getServerSideProps(context){
     const session = await getSession(context);
     let watchList = [];
     if(session){
-        const querySnapshot = await getDocs(collection(db, "user",session.user.id.toString(), "movie"));
-        querySnapshot.forEach((doc) => {
-            watchList.push(doc.data());
-        });
+        if (await getAuth().currentUser) {
+            const querySnapshot = await getDocs(collection(db, "user", session.user.id.toString(), "movie"));
+            querySnapshot.forEach((doc) => {
+                watchList.push(doc.data());
+            });
+        } else {
+            await signInAnonymously(auth).then(async (res) => {
+                const querySnapshot = await getDocs(collection(db, "user", session.user.id.toString(), "movie"));
+                querySnapshot.forEach((doc) => {
+                    watchList.push(doc.data());
+                });
+            }).catch(e => console.log(e));
+        }
     }
     const genres = await axios.get(`${requests.baseUrl}/genre/movie/list?api_key=${process.env.API_KEY}`).then((res) => {
         return res.data.genres;

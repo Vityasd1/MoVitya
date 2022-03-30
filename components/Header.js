@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Image from 'next/image';
 import {
     BadgeCheckIcon,
@@ -9,8 +9,7 @@ import {
     UserIcon
 } from "@heroicons/react/outline";
 import {useRouter} from "next/router";
-import {useSession} from "next-auth/react";
-import {signOut} from "next-auth/react"
+import {signOut, useSession} from "next-auth/react";
 import {useRecoilState} from "recoil";
 
 import LogoutItem from "./LogoutImage";
@@ -77,7 +76,7 @@ const Header = ({searchTerm, setSearchTerm}) => {
             </div>
             <Image
                 className="object-cover"
-                src={'/img/Movitya-logos_white.png'}
+                src={'/img/logo.png'}
                 width={200}
                 height={100}
                 alt={"Logo"}
